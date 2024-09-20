@@ -12,7 +12,7 @@ public class RestaurantOrderSystem {
         var order = new Order(orderNumber, new ArrayList<>(), 100, payment, notifier);
         orderNumber++;
         orders.add(order);
-        sendNotification(order.orderId, "Pedido criado com sucesso");
+        sendNotification(order.orderId, "Pedido número: " + orderNumber + " criado com sucesso");
 
         return order.orderId;
     }
@@ -22,7 +22,7 @@ public class RestaurantOrderSystem {
 
         if (order.isPresent()) {
             orders.remove(order.get());
-            order.get().notifier.sendNotification("Pedido cancelado com sucesso");
+            order.get().notifier.sendNotification("Pedido número: " + orderNumber + " cancelado com sucesso");
         } else {
             System.out.println("Pedido não encontrado");
         }
@@ -32,7 +32,7 @@ public class RestaurantOrderSystem {
         var order = findOrderById(orderId);
 
         if (order.isPresent()) {
-            order.get().notifier.sendNotification("Pedido entregue com sucesso.");
+            order.get().notifier.sendNotification("Pedido número: " + orderNumber + " entregue com sucesso");
             orders.remove(order.get());
         } else {
             System.out.println("Pedido não encontrado");

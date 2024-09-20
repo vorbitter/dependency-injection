@@ -7,6 +7,7 @@ public class App {
         var orderId2 = system.placeOrder(new CreditPayment(), new SMSNotifier());
         
         system.deliverOrder(orderId);
-        system.deliverOrder(orderId2);
+        system.cancelOrder(orderId2);
+        system.deliverOrder(orderId2);//pedido não encontrado
     }
 }
